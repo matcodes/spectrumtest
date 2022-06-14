@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="RickandMorty.Pages.CharactersList"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModel="clr-namespace:RickandMorty.ViewModels"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" xmlns:templates="clr-namespace:RickandMorty.Templates"
+    ios:Page.UseSafeArea="True"
+    BackgroundColor="{DynamicResource Gray-200}">
+    <NavigationPage.TitleView>
+        <StackLayout>
+            <Label
+                Margin="30,0,0,0"
+                FontFamily="{DynamicResource Montserrat-Bold}"
+                FontSize="Small"
+                HorizontalOptions="FillAndExpand"
+                HorizontalTextAlignment="Center"
+                LineBreakMode="TailTruncation"
+                MaxLines="2"
+                Text="CHARACTERS"
+                TextColor="{DynamicResource Gray-200}"
+                VerticalOptions="FillAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </NavigationPage.TitleView>
+    <ContentPage.ToolbarItems>
+        <ToolbarItem
+            Clicked="Filter_Clicked"
+            IconImageSource="filter.png"
+            Order="Primary"
+            Priority="1" />
+    </ContentPage.ToolbarItems>
+    <ContentPage.BindingContext>
+        <viewModel:CharactersVM />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                x:Name="listView"
+                CachingStrategy="RetainElement"
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsVisible="True"
+                ItemAppearing="ListView_ItemAppearing"
+                ItemTapped="List_ItemTapped"
+                ItemsSource="{Binding ChractarsList}"
+                RefreshControlColor="{DynamicResource Blue-100}"
+                Refreshing="Refresh_List"
+                SelectionMode="None"
+                SeparatorColor="{DynamicResource Gray-500}"
+                SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <templates:ListTemplate/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Grid Padding="6" IsVisible="{Binding IsBusy}">
+                        <ActivityIndicator
+                            x:Name="activityIndicator"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            IsRunning="True"
+                            VerticalOptions="FillAndExpand"
+                            Color="{DynamicResource Blue-50}" />
+                    </Grid>
+                </ListView.Footer>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

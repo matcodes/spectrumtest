@@ -1,0 +1,142 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<rg:PopupPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:rg="http://rotorgames.com" xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+              x:Name="ThisPage"
+              BackgroundColor="{DynamicResource White-50}"
+              BackgroundInputTransparent="False"
+              HasSystemPadding="False"
+              CloseWhenBackgroundIsClicked="False"
+             x:Class="RickandMorty.Popups.FilterPopup">
+    <rg:PopupPage.Animation>
+        <rg:MoveAnimation
+      PositionIn="Top"
+            HasBackgroundAnimation="True"
+      PositionOut="Top"/>
+    </rg:PopupPage.Animation>
+    <StackLayout
+        VerticalOptions="FillAndExpand"
+        HorizontalOptions="FillAndExpand">
+        <yummy:PancakeView
+            CornerRadius="5"
+            HorizontalOptions="FillAndExpand"
+            Margin="30,0"
+            Padding="20"
+            VerticalOptions="CenterAndExpand"
+            BackgroundColor="White"
+            IsClippedToBounds="False">
+            <yummy:PancakeView.Shadow>
+                <yummy:DropShadow Color="Black" BlurRadius="50"/>
+            </yummy:PancakeView.Shadow>
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <Label
+                    FontFamily="{StaticResource Montserrat-Bold}"
+                    FontSize="Large"
+                    HorizontalOptions="FillAndExpand"
+                    LineBreakMode="TailTruncation"
+                    HorizontalTextAlignment="Center"
+                    MaxLines="2"
+                    Text="Status"
+                    TextColor="{DynamicResource Gray-700}" />
+                <BoxView 
+                    VerticalOptions="Center"
+                    Color="{DynamicResource Gray-700}"
+                    HeightRequest="1"/>
+                <StackLayout 
+                    Padding="10,0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical">
+                    <RadioButton 
+                        CheckedChanged="Status_CheckedChanged"
+                        FontFamily="{StaticResource Montserrat-Regular}"
+                        Content="Alive"
+                        FontSize="Small"
+                        GroupName="status" />
+                    <RadioButton 
+                        CheckedChanged="Status_CheckedChanged"
+                        FontFamily="{StaticResource Montserrat-Regular}"
+                        FontSize="Small"
+                        Content="Dead"
+                        GroupName="status" />
+                    <RadioButton 
+                        CheckedChanged="Status_CheckedChanged"
+                        FontFamily="{StaticResource Montserrat-Regular}"
+                        FontSize="Small"
+                        Content="Unknown"
+                        GroupName="status" />
+                </StackLayout>
+                <BoxView 
+                    VerticalOptions="Center"
+                    Margin="0,10,0,0"
+                    Color="{DynamicResource Gray-700}"
+                    HeightRequest="1"/>
+                <Label
+                    
+                    FontFamily="{StaticResource Montserrat-Bold}"
+                    FontSize="Large"
+                    HorizontalOptions="FillAndExpand"
+                    LineBreakMode="TailTruncation"
+                    HorizontalTextAlignment="Center"
+                    MaxLines="2"
+                    Text="Gender"
+                    TextColor="{DynamicResource Gray-700}" />
+                <BoxView 
+                    VerticalOptions="Center"
+                    Color="{DynamicResource Gray-700}"
+                    HeightRequest="1"/>
+                <StackLayout 
+                    Padding="10,0"
+                    Orientation="Vertical">
+                    <RadioButton 
+                        CheckedChanged="Gender_CheckedChanged"
+                        FontFamily="{StaticResource Montserrat-Regular}"
+                        Content="Female"
+                        FontSize="Small"
+                        GroupName="gender" />
+                    <RadioButton 
+                        CheckedChanged="Gender_CheckedChanged"
+                        FontFamily="{StaticResource Montserrat-Regular}"
+                        FontSize="Small"
+                        Content="Male"
+                        GroupName="gender" />
+                    <RadioButton 
+                        CheckedChanged="Gender_CheckedChanged"
+                        FontFamily="{StaticResource Montserrat-Regular}"
+                        FontSize="Small"
+                        Content="Genderless"
+                        GroupName="gender" />
+                    <RadioButton 
+                        CheckedChanged="Gender_CheckedChanged"
+                        FontFamily="{StaticResource Montserrat-Regular}"
+                        FontSize="Small"
+                        Content="Unknown"
+                        GroupName="gender" />
+                </StackLayout>
+                <Button
+                    Margin="0,20,0,0"
+                    FontFamily="{StaticResource Montserrat-Bold}"
+                    Text="SET"
+                    WidthRequest="100"
+                    HeightRequest="35"
+                    TextColor="{DynamicResource Gray-100}"
+                    FontSize="Small"
+                    Clicked="Btn_Clicked"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="Center">
+                    <Button.Background>
+                        <LinearGradientBrush StartPoint="0,0"
+                          EndPoint="1,0">
+                            <GradientStop Color="{DynamicResource Blue-100}"
+                       Offset="0.1"/>
+                            <GradientStop Color="{DynamicResource Blue-50}"
+                       Offset="1.0"/>
+                        </LinearGradientBrush>
+                    </Button.Background>
+                </Button>
+            </StackLayout>
+        </yummy:PancakeView>
+    </StackLayout>
+    
+</rg:PopupPage>

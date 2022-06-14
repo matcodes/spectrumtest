@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="RickandMorty.Templates.ListTemplate"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
+    <ContentView.Content>
+        <StackLayout>
+            <Grid Padding="15,7">
+                <yummy:PancakeView
+                    Margin="30,0,0,0"
+                    CornerRadius="15"
+                    HorizontalOptions="FillAndExpand"
+                    IsClippedToBounds="False"
+                    VerticalOptions="FillAndExpand">
+                    <yummy:PancakeView.Shadow>
+                        <yummy:DropShadow BlurRadius="3" Color="{DynamicResource Gray-500}" />
+                    </yummy:PancakeView.Shadow>
+                    <StackLayout>
+                        <StackLayout.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                <GradientStop Offset="0.1" Color="{DynamicResource Blue-100}" />
+                                <GradientStop Offset="1.0" Color="{DynamicResource Blue-50}" />
+                            </LinearGradientBrush>
+                        </StackLayout.Background>
+                    </StackLayout>
+                </yummy:PancakeView>
+                <Grid
+                    Padding="0,10,10,10"
+                    ColumnSpacing="20"
+                    VerticalOptions="Start">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*" />
+                        <ColumnDefinition Width="65*" />
+                    </Grid.ColumnDefinitions>
+                    <Frame
+                        Grid.Column="0"
+                        Padding="0"
+                        CornerRadius="15"
+                        HasShadow="True"
+                        HorizontalOptions="FillAndExpand"
+                        IsClippedToBounds="True"
+                        VerticalOptions="FillAndExpand">
+                        <Grid>
+                            <Image
+                                Aspect="AspectFill"
+                                BackgroundColor="Transparent"
+                                HeightRequest="150"
+                                Source="RunnerIcon" />
+                            <Image
+                                Aspect="AspectFill"
+                                BackgroundColor="Transparent"
+                                HeightRequest="150">
+                                <Image.Source>
+                                    <UriImageSource CachingEnabled="true" Uri="{Binding Image}" />
+                                </Image.Source>
+                            </Image>
+                        </Grid>
+
+                    </Frame>
+                    <StackLayout
+                        Grid.Column="1"
+                        Spacing="25"
+                        VerticalOptions="CenterAndExpand">
+                        <StackLayout Spacing="3">
+                            <Label
+                                HorizontalOptions="FillAndExpand"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span
+                                            FontFamily="{StaticResource Montserrat-Bold}"
+                                            FontSize="Medium"
+                                            Text="{Binding Name}"
+                                            TextColor="{DynamicResource Gray-400}" />
+                                        <Span Text=" " />
+                                        <Span
+                                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                                            FontSize="Small"
+                                            Text="{Binding Species, StringFormat='({0})'}"
+                                            TextColor="{DynamicResource Gray-300}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label
+                                FontFamily="{StaticResource Montserrat-SemiBold}"
+                                FontSize="12"
+                                HorizontalOptions="FillAndExpand"
+                                LineBreakMode="TailTruncation"
+                                MaxLines="2"
+                                Text="{Binding Origin.Name}"
+                                TextColor="{DynamicResource Gray-300}"
+                                VerticalOptions="FillAndExpand" />
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal">
+                            <Frame
+                                Padding="15,2,15,3"
+                                BackgroundColor="{DynamicResource LabelBg}"
+                                HasShadow="True"
+                                HorizontalOptions="Start"
+                                IsClippedToBounds="True">
+                                <Frame.CornerRadius>
+                                    <OnPlatform x:TypeArguments="x:Single">
+                                        <On Platform="Android" Value="100" />
+                                        <On Platform="iOS" Value="12" />
+                                    </OnPlatform>
+                                </Frame.CornerRadius>
+                                <Label
+                                    FontFamily="{StaticResource Montserrat-Medium}"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    Text="{Binding Gender}"
+                                    TextColor="{DynamicResource Gray-700}"
+                                    VerticalTextAlignment="Center" />
+                            </Frame>
+                            <Frame
+                                Padding="15,2,15,3"
+                                BackgroundColor="{DynamicResource LabelBg}"
+                                HasShadow="True"
+                                HorizontalOptions="Start"
+                                IsClippedToBounds="True">
+                                <Frame.CornerRadius>
+                                    <OnPlatform x:TypeArguments="x:Single">
+                                        <On Platform="Android" Value="100" />
+                                        <On Platform="iOS" Value="12" />
+                                    </OnPlatform>
+                                </Frame.CornerRadius>
+                                <Label
+                                    FontFamily="{StaticResource Montserrat-Medium}"
+                                    FontSize="Small"
+                                    HorizontalOptions="Start"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="2"
+                                    Text="{Binding Status}"
+                                    TextColor="{DynamicResource Gray-700}"
+                                    VerticalTextAlignment="Center" />
+                            </Frame>
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </Grid>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
